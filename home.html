@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Supporto DevOps</title>
+<link rel="icon" href="assets/PTFav.png" type="image/x-icon">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+
+<style>
+body {
+  font-family: "Lato", sans-serif;
+  /*font-family: "Lato", arial black;*/
+}
+
+.nav-link[data-toggle].collapsed:after {
+  content: "\25BE";
+}
+.nav-link[data-toggle]:not(.collapsed):after {
+  content: "\25B4";
+}
+
+.sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #eedc00;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 10px;
+  box-shadow: 10px 12px 14px 4px #b6d1fb;
+}
+
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 16px;
+  color: #0d47a1;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+#main {
+  transition: margin-left .5s;
+  padding: 16px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+</style>
+</head>
+<body>
+
+<div id="mySidenav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <ul class="nav flex-column flex-nowrap">
+      <li class="nav-item"><a class="nav-link" href="#" ondragstart="return false" class="rounded mx-auto d-block" onclick="changeSrc('iFrmPoste','http://gamon.rete.poste/portalega/logoposte.html');" style="padding: 0;"><img src="assets/Logo.jpg" alt="Poste Italiane" align="middle" height="50" width="170"></a></li>
+
+      <li class="nav-item"><a style="padding: 32px 8px 8px 18px" href="https://gitlab.rete.poste/mwdevops/ocp/-/blob/master/AMBIENTI.md" id="LstAmbGitLab" target="_blank" draggable="false"><strong>Ambienti - GitLab</strong></a></li>
+      <!--<li class="nav-item"><a style="padding: 32px 8px 8px 18px" href="https://gitlab.rete.poste/mwdevops/ocp/-/blob/master/AMBIENTI.md" id="LstAarat" onclick="changeSrc('iFrmPoste','https://gitlab.rete.poste/mwdevops/ocp/-/blob/master/AMBIENTI.md'); return false;">Ambienti - GitLab</a></li>-->
+
+      <li class="nav-item"><a class="nav-link collapsed" style="padding: 8px 8px 8px 18px" href="#submenu1" draggable="false" data-toggle="collapse" data-target="#submenu1"><strong>Sviluppo</strong></a>
+          <div class="collapse" id="submenu1" aria-expanded="false">
+              <ul class="flex-column pl-2 nav">
+
+                  <li class="nav-item"><a class="nav-link collapsed py-1" href="#submenu1sub1" draggable="false" data-toggle="collapse" data-target="#submenu1sub1"><strong>OpenShift</strong></a>
+                        <div class="collapse" id="submenu1sub1" aria-expanded="false">
+                            <ul class="flex-column nav pl-4">
+                                <li class="nav-item">
+                                      <a class="nav-link py-1" href="https://master.svil2.ocprm.testposte:8443" id="LstSvil2Test" target="_blank" draggable="false" >
+                                        <i class="fa fa-fw fa-clock-o"></i> svil2.ocprm.testposte
+                                      </a>
+                                </li>
+                                <li class="nav-item">
+                                      <a class="nav-link py-1" href="https://master.svil.openshift.rdc.aztestposte:8443/" id="LstSvilAz1" target="_blank" draggable="false" >
+                                        <i class="fa fa-fw fa-clock-o"></i> svil.openshift.rdc.aztestposte
+                                      </a>
+                                </li>
+                                <li class="nav-item">
+                                      <a class="nav-link py-1" href="https://master.svil.pcl.openshift.aztestposte:8443/" id="LstSvilAz2" target="_blank" draggable="false" >
+                                        <i class="fa fa-fw fa-clock-o"></i> svil.pcl.openshift.aztestposte
+                                      </a>
+                                </li>
+                                <li class="nav-item">
+                                      <a class="nav-link py-1" href="https://master.ocp.svil.poste:8443/" id="LstSvilTest" target="_blank" draggable="false" >
+                                        <i class="fa fa-fw fa-clock-o"></i> ocp.svil.poste 3.9
+                                      </a>
+                                </li>
+                                <li class="nav-item">
+                                      <a class="nav-link py-1" href="https://master.feunicosvil.rete.testposte:8443/" id="LstFeunicoSvil" target="_blank" draggable="false" >
+                                        <i class="fa fa-fw fa-clock-o"></i> feunicosvil.rete.testposte
+                                      </a>
+                                </li>
+                                <li class="nav-item">
+                                      <a class="nav-link py-1" href="https://master.svil.gpweb2.openshift.aztestposte:8443/" id="LstSvilGpweb2" target="_blank" draggable="false" >
+                                        <i class="fa fa-fw fa-clock-o"></i> svil.gpweb2.openshift.aztestposte
+                                      </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <li class="nav-item"><a class="nav-link collapsed py-1" href="#submenu1sub2" draggable="false" data-toggle="collapse" data-target="#submenu1sub2"><strong>Kafka</strong></a>
+                          <div class="collapse" id="submenu1sub2" aria-expanded="false">
+                              <ul class="flex-column nav pl-4">
+                                  <li class="nav-item">
+                                        <a class="nav-link py-1" href="https://ssdpgemahdik01a.azurehdinsight.net/#/main" id="LstKafkaSvil2" target="_blank" draggable="false" >
+                                          <i class="fa fa-fw fa-clock-o"></i> SDP-GEMA
+                                        </a>
+                                  </li>
+                                  <li class="nav-item">
+                                        <a class="nav-link py-1" href="https://scrmuhdinsight.azurehdinsight.net/#/main/dashboard/metrics" id="LstKafkaCrmu" target="_blank" draggable="false" >
+                                          <i class="fa fa-fw fa-clock-o"></i> CRMU
+                                        </a>
+                                  </li>
+                              </ul>
+                          </div>
+                      </li>
+
+                      <li class="nav-item"><a class="nav-link collapsed py-1" href="#submenu1sub3" draggable="false" data-toggle="collapse" data-target="#submenu1sub3"><strong>Jenkins</strong></a>
+                            <div class="collapse" id="submenu1sub3" aria-expanded="false">
+                                <ul class="flex-column nav pl-4">
+                                    <li class="nav-item">
+                                          <a class="nav-link py-1" href="https://ssdpgemahdik01a.azurehdinsight.net/#/main" id="LstJenkSvil2" target="_blank" draggable="false" >
+                                            <i class="fa fa-fw fa-clock-o"></i> Svil2
+                                          </a>
+                                    </li>
+                                    <li class="nav-item">
+                                          <a class="nav-link py-1" href="https://scrmuhdinsight.azurehdinsight.net/#/main/dashboard/metrics" id="LstJenkSvilPcl" target="_blank" draggable="false" >
+                                            <i class="fa fa-fw fa-clock-o"></i> PCL
+                                          </a>
+                                    </li>
+                                    <li class="nav-item">
+                                          <a class="nav-link py-1" href="https://scrmuhdinsight.azurehdinsight.net/#/main/dashboard/metrics" id="LstJenkSvilGpweb2" target="_blank" draggable="false" >
+                                            <i class="fa fa-fw fa-clock-o"></i> GPWEB2
+                                          </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+
+                        <li class="nav-item"><a class="nav-link py-1" id="LstKibanaSvil" draggable="false" href="https://10.183.134.70:5601" target="_blank"><strong>Kibana</strong></a></li>
+
+              </ul>
+          </div>
+          </li>
+      </li>
+      <li class="nav-item"><a class="nav-link collapsed" style="padding: 8px 8px 8px 18px" href="#submenu2" draggable="false" data-toggle="collapse" data-target="#submenu2"><strong>Collaudo</strong></a>
+          <div class="collapse" id="submenu2" aria-expanded="false">
+
+            <ul class="flex-column pl-2 nav">
+
+                <li class="nav-item"><a class="nav-link collapsed py-1" href="#submenu2sub1" draggable="false" data-toggle="collapse" data-target="#submenu2sub1"><strong>OpenShift</strong></a>
+                      <div class="collapse" id="submenu2sub1" aria-expanded="false">
+                          <ul class="flex-column nav pl-4">
+                              <li class="nav-item">
+                                    <a class="nav-link py-1" href="https://master.coll2.ocprm.testposte:8443" id="LstColl2Test" target="_blank" draggable="false" >
+                                      <i class="fa fa-fw fa-clock-o"></i> coll2.ocprm.testposte
+                                    </a>
+                              </li>
+                              <li class="nav-item">
+                                    <a class="nav-link py-1" href="https://master.coll.pcl.openshift.aztestposte:8443/" id="LstCollAz1" target="_blank" draggable="false" >
+                                      <i class="fa fa-fw fa-clock-o"></i> coll.pcl.openshift.aztestposte
+                                    </a>
+                              </li>
+                              <li class="nav-item">
+                                    <a class="nav-link py-1" href="https://master.feunico.rete.testposte:8443" id="LstFeuColl" target="_blank" draggable="false" >
+                                      <i class="fa fa-fw fa-clock-o"></i> feunico.app.rete.testposte
+                                    </a>
+                              </li>
+                              <li class="nav-item">
+                                    <a class="nav-link py-1" href="https://trtdmas05v:8443/" id="LstOcpColl" target="_blank" draggable="false" >
+                                      <i class="fa fa-fw fa-clock-o"></i> ocp.coll.poste 3.9
+                                    </a>
+                              </li>
+                              <li class="nav-item">
+                                    <a class="nav-link py-1" href="https://master.coll.gpweb2.openshift.aztestposte:8443/" id="LstGpweb2Coll" target="_blank" draggable="false" >
+                                      <i class="fa fa-fw fa-clock-o"></i> coll.gpweb2.openshift.aztestposte
+                                    </a>
+                              </li>
+
+                          </ul>
+                      </div>
+                  </li>
+
+                  <li class="nav-item"><a class="nav-link collapsed py-1" href="#submenu2sub2" draggable="false" data-toggle="collapse" data-target="#submenu2sub2"><strong>Kafka</strong></a>
+                        <div class="collapse" id="submenu2sub2" aria-expanded="false">
+                            <ul class="flex-column nav pl-4">
+                                <li class="nav-item">
+                                      <a class="nav-link py-1" href="https://tsdpgemahdik01a.azurehdinsight.net/#/main" id="LstKafkaColl" target="_blank" draggable="false" >
+                                        <i class="fa fa-fw fa-clock-o"></i> SDP-GEMA
+                                      </a>
+                                </li>
+                                <li class="nav-item">
+                                      <a class="nav-link py-1" href="https://tcrmuhdinsight.azurehdinsight.net/#/main/dashboard/metrics" id="LstKafkaCrmuColl" target="_blank" draggable="false" >
+                                        <i class="fa fa-fw fa-clock-o"></i> CRMU
+                                      </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <li class="nav-item"><a class="nav-link py-1" id="LstKibanaColl" draggable="false" href="https://10.183.134.70:5602" target="_blank"><strong>Kibana</strong></a></li>
+
+                </ul>
+              </div>
+            </li>
+
+              <li class="nav-item"><a class="nav-link collapsed" style="padding: 8px 8px 8px 18px" href="#submenu3" draggable="false" data-toggle="collapse" data-target="#submenu3"><strong>Certificazione</strong></a>
+                  <div class="collapse" id="submenu3" aria-expanded="false">
+
+                    <ul class="flex-column pl-2 nav">
+
+                        <li class="nav-item"><a class="nav-link collapsed py-1" href="#submenu3sub1" draggable="false" data-toggle="collapse" data-target="#submenu3sub1"><strong>OpenShift</strong></a>
+                              <div class="collapse" id="submenu3sub1" aria-expanded="false">
+                                  <ul class="flex-column nav pl-4">
+                                      <li class="nav-item">
+                                            <a class="nav-link py-1" href="https://master.cert.ocpto.local" id="LstCertTo" target="_blank" draggable="false" >
+                                              <i class="fa fa-fw fa-clock-o"></i> cert.ocpto.local
+                                            </a>
+                                      </li>
+                                      <li class="nav-item">
+                                            <a class="nav-link py-1" href="https://master.pcl.openshift.azpostecert:8443/" id="LstCertAz1" target="_blank" draggable="false" >
+                                              <i class="fa fa-fw fa-clock-o"></i> pcl.openshift.azpostecert
+                                            </a>
+                                      </li>
+                                      <li class="nav-item">
+                                            <a class="nav-link py-1" href="https://master.gpweb2.openshift.azpostecert:8443/" id="LstGpweb2AzCert" target="_blank" draggable="false" >
+                                              <i class="fa fa-fw fa-clock-o"></i> gpweb2.openshift.azpostecert
+                                            </a>
+                                      </li>
+                                      <li class="nav-item">
+                                            <a class="nav-link py-1" href="https://ocp.retecert.postecert:8443" id="LstOcpCert" target="_blank" draggable="false" >
+                                              <i class="fa fa-fw fa-clock-o"></i> ocp.postecert 3.9
+                                            </a>
+                                      </li>
+                                      <li class="nav-item">
+                                            <a class="nav-link py-1" href="https://ocp.cloud.postecert/" id="LstOcpCloudCert" target="_blank" draggable="false" >
+                                              <i class="fa fa-fw fa-clock-o"></i> ocp.cloud.postecert
+                                            </a>
+                                      </li>
+                                      <li class="nav-item">
+                                            <a class="nav-link py-1" href="https://masterpcl.az.cert.digital.poste:8443/" id="LstAzDigitCert" target="_blank" draggable="false" >
+                                              <i class="fa fa-fw fa-clock-o"></i> az.cert.digital.poste OKD
+                                            </a>
+                                      </li>
+
+                                  </ul>
+                              </div>
+                          </li>
+
+                          <li class="nav-item"><a class="nav-link collapsed py-1" href="#submenu3sub2" draggable="false" data-toggle="collapse" data-target="#submenu3sub2"><strong>Kafka</strong></a>
+                                <div class="collapse" id="submenu3sub2" aria-expanded="false">
+                                    <ul class="flex-column nav pl-4">
+                                        <li class="nav-item">
+                                              <a class="nav-link py-1" href="https://csdpgemahdik01a.azurehdinsight.net/#/main" id="LstKafkaCert" target="_blank" draggable="false" >
+                                                <i class="fa fa-fw fa-clock-o"></i> SDP-GEMA
+                                              </a>
+                                        </li>
+                                        <li class="nav-item">
+                                              <a class="nav-link py-1" href="https://ccrmuhdinsight.azurehdinsight.net/#/main/dashboard/metrics" id="LstKafkaCrmuCert" target="_blank" draggable="false" >
+                                                <i class="fa fa-fw fa-clock-o"></i> CRMU
+                                              </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+
+                            <li class="nav-item"><a class="nav-link py-1" id="LstKibanaCert" draggable="false" href="https://10.183.141.231:5601" target="_blank"><strong>Kibana</strong></a></li>
+
+                        </ul>
+
+                  </div>
+                </li>
+                <li class="nav-item"><a class="nav-link collapsed" style="padding: 8px 8px 8px 18px" href="#submenu4" draggable="false" data-toggle="collapse" data-target="#submenu4"><strong>Produzione</strong></a>
+                    <div class="collapse" id="submenu4" aria-expanded="false">
+
+                      <ul class="flex-column pl-2 nav">
+
+                          <li class="nav-item"><a class="nav-link collapsed py-1" href="#submenu4sub1" draggable="false" data-toggle="collapse" data-target="#submenu4sub1"><strong>OpenShift</strong></a>
+                                <div class="collapse" id="submenu4sub1" aria-expanded="false">
+                                    <ul class="flex-column nav pl-4">
+                                        <li class="nav-item">
+                                              <a class="nav-link py-1" href="https://master.prod2.ocprm.local:8443" id="LstProdTo" target="_blank" draggable="false" >
+                                                <i class="fa fa-fw fa-clock-o"></i> prod.ocprm.local
+                                              </a>
+                                        </li>
+                                        <li class="nav-item">
+                                              <a class="nav-link py-1" href="https://master.prod.ocpto.local:8443/" id="LstProdDR" target="_blank" draggable="false" >
+                                                <i class="fa fa-fw fa-clock-o"></i> prod.ocpto.local (DR TO)
+                                              </a>
+                                        </li>
+                                        <li class="nav-item">
+                                              <a class="nav-link py-1" href="https://master.pcl.openshift.azposte:8443/" id="LstProdAz" target="_blank" draggable="false" >
+                                                <i class="fa fa-fw fa-clock-o"></i> pcl.openshift.azposte
+                                              </a>
+                                        </li>
+                                        <li class="nav-item">
+                                              <a class="nav-link py-1" href="https://master.gpweb2.openshift.azposte:8443/" id="LstGpweb2Prod" target="_blank" draggable="false" >
+                                                <i class="fa fa-fw fa-clock-o"></i> gpweb2.openshift.azposte
+                                              </a>
+                                        </li>
+                                        <li class="nav-item">
+                                              <a class="nav-link py-1" href="https://master.int.openshift.gov.azposte:8443/" id="LstIntGovProd" target="_blank" draggable="false" >
+                                                <i class="fa fa-fw fa-clock-o"></i> int.openshift.gov.azposte
+                                              </a>
+                                        </li>
+                                        <li class="nav-item">
+                                              <a class="nav-link py-1" href="https://master.ext.openshift.gov.azposte:8443/" id="LstExtGovProd" target="_blank" draggable="false" >
+                                                <i class="fa fa-fw fa-clock-o"></i> ext.openshift.gov.azposte
+                                              </a>
+                                        </li>
+                                        <li class="nav-item">
+                                              <a class="nav-link py-1" href="https://ocp.rete.poste:8443" id="LstOcpProd39" target="_blank" draggable="false" >
+                                                <i class="fa fa-fw fa-clock-o"></i> ocp.poste 3.9
+                                              </a>
+                                        </li>
+                                        <li class="nav-item">
+                                              <a class="nav-link py-1" href="https://ocp.cloud.poste/" id="LstOcpProd" target="_blank" draggable="false" >
+                                                <i class="fa fa-fw fa-clock-o"></i> ocp.cloud.poste
+                                              </a>
+                                        </li>
+                                        <li class="nav-item">
+                                              <a class="nav-link py-1" href="https://masterpcl.az.prod.digital.poste:8443/" id="LstAzProdDigit" target="_blank" draggable="false" >
+                                                <i class="fa fa-fw fa-clock-o"></i> az.prod.digital.poste
+                                              </a>
+                                        </li>
+
+                                    </ul>
+                                </div>
+                            </li>
+
+                            <li class="nav-item"><a class="nav-link collapsed py-1" href="#submenu4sub2" draggable="false" data-toggle="collapse" data-target="#submenu4sub2"><strong>Kafka</strong></a>
+                                  <div class="collapse" id="submenu4sub2" aria-expanded="false">
+                                      <ul class="flex-column nav pl-4">
+                                          <li class="nav-item">
+                                                <a class="nav-link py-1" href="https://psdpgemahdik01a.azurehdinsight.net/#/main" id="LstKafkaProd" target="_blank" draggable="false" >
+                                                  <i class="fa fa-fw fa-clock-o"></i> SDP-GEMA
+                                                </a>
+                                          </li>
+                                          <li class="nav-item">
+                                                <a class="nav-link py-1" href="https://pcrmuhdinsight.azurehdinsight.net/#/main/dashboard/metrics" id="LstKafkaCrmuProd" target="_blank" draggable="false" >
+                                                  <i class="fa fa-fw fa-clock-o"></i> CRMU
+                                                </a>
+                                          </li>
+                                      </ul>
+                                  </div>
+                              </li>
+
+                              <li class="nav-item"><a class="nav-link py-1" id="LstJenkinsProd" draggable="false" href="http://jenkins.rete.poste:8080/jenkins" target="_blank"><strong>Jenkins</strong></a></li>
+                              <li class="nav-item"><a class="nav-link py-1" id="LstKibanaProd" draggable="false" href="https://kibana-auditlog.app.prod.ocprm.local/app/kibana#" target="_blank"><strong>Kibana</strong></a></li>
+
+                          </ul>
+
+                    </div>
+                  </li>
+
+                  <li class="nav-item"><a class="nav-link collapsed" style="padding: 8px 8px 8px 18px" href="#submenu23" draggable="false" data-toggle="collapse" data-target="#submenu23"><strong>Monitoraggi</strong></a>
+                      <div class="collapse" id="submenu23" aria-expanded="false">
+                          <ul class="flex-column pl-2 nav">
+                            <!--<li class="nav-item"><a class="nav-link py-0" href="http://webcrudis.rete.poste/" id="LstACrusOpe" draggable="false" onclick="changeSrc('iFrmPoste','http://webcrudis.rete.poste/');return false;">Cruscotto Operations</a></li>
+                            <li class="nav-item"><a class="nav-link py-0" href="https://servizi.posteitaliane.it/webcrudis/poli_ricettivita.aspx" id="LstACrusOpeGov" draggable="false" onclick="changeSrc('iFrmPoste','https://servizi.posteitaliane.it/webcrudis/poli_ricettivita.aspx');return false;">Cruscotto Operations Governance</a></li>
+                            <li class="nav-item"><a class="nav-link py-0" href="https://servizi.posteitaliane.it/webcrudis/serviceDeskSOM.aspx" id="LstACrusOpeSom" draggable="false" onclick="changeSrc('iFrmPoste','https://servizi.posteitaliane.it/webcrudis/serviceDeskSOM.aspx');return false;">Cruscotto Operations Ticket SOM</a></li>
+                            <li class="nav-item"><a class="nav-link py-0" id="LstATicketFeu" draggable="false" href="https://posteitaliane.sharepoint.com/:x:/r/sites/NoidiBO_SERVIZI_UP2/Documenti%20condivisi/TT_FEU.xlsx?d=w3d1c4651c77f45c8ae5ec504a8283109&csf=1&e=b0UyuE" target="_blank">Link Ticket FEU</a></li>-->
+                            
+                          </ul>
+                        </div>
+                    </li>
+
+
+  </ul>
+
+</div>
+
+
+<div id="main">
+  <span style="color: #0d47a1;font-size:20px;cursor:pointer" onclick="openNav()">&#9776;</span>
+  <div class="embed-responsive embed-responsive-16by9">
+    <iframe class="embed-responsive-item" id="iFrmPoste" class="rounded mx-auto d-block" src="http://gamon.rete.poste/portalega/logoposte.html"></iframe>
+  </div>
+</div>
+
+<script>
+    function changeSrc(idFrame, url) {
+      document.getElementById(idFrame).src = url;
+  }
+</script>
+
+<script>
+
+function openNav() {
+  document.getElementById("mySidenav").style.width = "310px"; //250ox
+  document.getElementById("main").style.marginLeft = "310px";
+}
+
+function closeNav() {
+  document.getElementById("mySidenav").style.width = "0";
+  document.getElementById("main").style.marginLeft= "0";
+}
+
+
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html>
