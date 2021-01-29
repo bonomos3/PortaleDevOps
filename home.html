@@ -73,8 +73,8 @@ body {
   <ul class="nav flex-column flex-nowrap">
       <li class="nav-item"><a class="nav-link" href="#" ondragstart="return false" class="rounded mx-auto d-block" onclick="changeSrc('iFrmPoste','http://gamon.rete.poste/portalega/logoposte.html');" style="padding: 0;"><img src="assets/Logo.jpg" alt="Poste Italiane" align="middle" height="50" width="170"></a></li>
 
-      <li class="nav-item"><a style="padding: 32px 8px 8px 18px" href="https://gitlab.rete.poste/mwdevops/ocp/-/blob/master/AMBIENTI.md" id="LstAmbGitLab" target="_blank" draggable="false"><strong>Ambienti - GitLab</strong></a></li>
-      <!--<li class="nav-item"><a style="padding: 32px 8px 8px 18px" href="https://gitlab.rete.poste/mwdevops/ocp/-/blob/master/AMBIENTI.md" id="LstAarat" onclick="changeSrc('iFrmPoste','https://gitlab.rete.poste/mwdevops/ocp/-/blob/master/AMBIENTI.md'); return false;">Ambienti - GitLab</a></li>-->
+      <li class="nav-item"><a style="padding: 32px 8px 8px 18px" href="https://gitlab.rete.poste/mwdevops/ocp/-/blob/master/AMBIENTI.md" id="LstAmbGitLab" target="_blank" draggable="false"><strong>Ambienti DevOps</strong></a></li>
+      <li class="nav-item"><a style="padding: 8px 8px 8px 18px" href="https://gitlab.alm.poste.it/mwdevops/infrastruttura/-/blob/master/NODIOCP.md" id="LstAmbGitLab" target="_blank" draggable="false"><strong>Nodi e Account - Ocp</strong></a></li>
 
       <li class="nav-item"><a class="nav-link collapsed" style="padding: 8px 8px 8px 18px" href="#submenu1" draggable="false" data-toggle="collapse" data-target="#submenu1"><strong>Sviluppo</strong></a>
           <div class="collapse" id="submenu1" aria-expanded="false">
@@ -375,11 +375,9 @@ body {
                   <li class="nav-item"><a class="nav-link collapsed" style="padding: 8px 8px 8px 18px" href="#submenu23" draggable="false" data-toggle="collapse" data-target="#submenu23"><strong>Monitoraggi</strong></a>
                       <div class="collapse" id="submenu23" aria-expanded="false">
                           <ul class="flex-column pl-2 nav">
-                            <!--<li class="nav-item"><a class="nav-link py-0" href="http://webcrudis.rete.poste/" id="LstACrusOpe" draggable="false" onclick="changeSrc('iFrmPoste','http://webcrudis.rete.poste/');return false;">Cruscotto Operations</a></li>
-                            <li class="nav-item"><a class="nav-link py-0" href="https://servizi.posteitaliane.it/webcrudis/poli_ricettivita.aspx" id="LstACrusOpeGov" draggable="false" onclick="changeSrc('iFrmPoste','https://servizi.posteitaliane.it/webcrudis/poli_ricettivita.aspx');return false;">Cruscotto Operations Governance</a></li>
-                            <li class="nav-item"><a class="nav-link py-0" href="https://servizi.posteitaliane.it/webcrudis/serviceDeskSOM.aspx" id="LstACrusOpeSom" draggable="false" onclick="changeSrc('iFrmPoste','https://servizi.posteitaliane.it/webcrudis/serviceDeskSOM.aspx');return false;">Cruscotto Operations Ticket SOM</a></li>
-                            <li class="nav-item"><a class="nav-link py-0" id="LstATicketFeu" draggable="false" href="https://posteitaliane.sharepoint.com/:x:/r/sites/NoidiBO_SERVIZI_UP2/Documenti%20condivisi/TT_FEU.xlsx?d=w3d1c4651c77f45c8ae5ec504a8283109&csf=1&e=b0UyuE" target="_blank">Link Ticket FEU</a></li>-->
-                            
+                            <li class="nav-item"><a class="nav-link py-1" id="LstMonOcpPodNS" draggable="false" href="https://app.datadoghq.eu/dashboard/fed-2mm-3ya/cluster-openshift-numero-pod-e-namespace?from_ts=1611078304845&to_ts=1611081904845&live=true" target="_blank"><strong>Pod e Namespace</strong></a></li>
+                            <li class="nav-item"><a class="nav-link py-1" id="LstMonOcpPodNS" draggable="false" href="https://datalog.rete.poste/kibana/app/kibana#/dashboard/854b5300-7e49-11ea-a9b7-216a08ef46d1?_g=" target="_blank"><strong>Log Collection Governance</strong></a></li>
+
                           </ul>
                         </div>
                     </li>
